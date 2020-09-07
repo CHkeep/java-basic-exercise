@@ -16,10 +16,12 @@ public class GrammarExercise {
         List<String> result = findCommonWordsWithSpace(firstWordList,secondWordList);
         //按要求输出到命令行
 
-
-
-
-
+    }
+    private static boolean isWordList(String WordList) {
+        // 创建一个匹配模式
+        Pattern pattern = Pattern.compile("^[A-Z]*([A-Z]+[,])*([A-Z]+)$");
+        Matcher matcher = pattern.matcher(WordList);
+        return matcher.matches();
     }
 
     public static List<String> findCommonWordsWithSpace(String firstWordList, String secondWordList) {
@@ -31,6 +33,8 @@ public class GrammarExercise {
         if(!isWordList(firstWordList)||!isWordList(secondWordList)) {
             throw new RuntimeException("input not");
         };
+
+
 
         List<String> list = new ArrayList<String>();
         Set treeSetResult = new TreeSet();
@@ -51,17 +55,9 @@ public class GrammarExercise {
 
             }
         }
-        System.out.println("treeSetResult:"+treeSetResult);
         result.addAll(treeSetResult);
-        System.out.println("Result:"+result);
-
         return result;
     }
 
-    private static boolean isWordList(String WordList) {
-        // 创建一个匹配模式
-        Pattern pattern = Pattern.compile("^[A-Z]*([A-Z]+[,])*([A-Z]+)$");
-        Matcher matcher = pattern.matcher(WordList);
-        return matcher.matches();
-    }
+
 }
